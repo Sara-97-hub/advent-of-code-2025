@@ -1,29 +1,45 @@
-k = 12
+def count_rolls(grid, r, c):
+    rows = len(grid)
+    cols = len(grid[0])
+    cnt = 0
+    for dr in (-1, 0, 1):
+        for dc in (-1, 0, 1):
+            if dr == 0 and dc == 0:
+                continue
+            nr = r + dr
+            nc = c + dc
+            if 0 <= nr < rows and 0 <= nc < cols:
+                if grid[nr][nc] == '@':
+                    cnt += 1
+    return cnt
 
-def max_joltage(line, k):
-    line = line.strip()
-    digits = [int(c) for c in line]
-    drop = len(digits) - k
-    stack = []
 
-    for d in digits:
-        while drop > 0 and stack and stack[-1] < d:
-            stack.pop()
-            drop -= 1
-        stack.append(d)
+def main():
+    with open("input04.txt", "r") as f:
+        grid = [list(line.strip()) for line in f if line.strip()]
 
-    stack = stack[:k]
-    result = int("".join(str(d) for d in stack))
-    return result
+    rows = len(grid)
+    cols = len(grid[0])
+    total_removed = 0
 
-total = 0
+    while True:
+        to_remove = []
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == '@':
+                    if count_rolls(grid, r, c) < 4:
+                        to_remove.append((r, c))
 
-with open("input04.txt") as f:
-    for line in f:
-        line = line.strip()
-        if not line:
-            continue
-        total += max_joltage(line, k)
+        if not to_remove:
+            break
 
-print(total)
+        for r, c in to_remove:
+            grid[r][c] = '.'
 
+        total_removed += len(to_remove)
+
+    print(total_removed)
+
+
+if __name__ == "__main__":
+    main()
