@@ -1,5 +1,6 @@
 def main():
-    count_zero = 0
+    count_zero_part1 = 0
+    count_zero_part2 = 0
     position = 50
 
     with open("input.txt", "r") as f:
@@ -11,18 +12,21 @@ def main():
             direction = line[0]
             value = int(line[1:])
 
-            if direction == "R":
-                position = (position + value) % 100
-            else:
-                position = (position - value) % 100
+            for _ in range(value):
+                if direction == "R":
+                    position = (position + 1) % 100
+                else:
+                    position = (position - 1) % 100
+
+                if position == 0:
+                    count_zero_part2 += 1
 
             if position == 0:
-                count_zero += 1
+                count_zero_part1 += 1
 
-    print("Password:", count_zero)
+    print("Part 1 password:", count_zero_part1)
+    print("Part 2 password:", count_zero_part2)
 
 
 if __name__ == "__main__":
     main()
-
-
