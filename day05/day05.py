@@ -1,11 +1,8 @@
 def read_database(ingredient_file):
-   
     lines = []
-
     with open(ingredient_file, "r") as f:
-       for line in f:
-         lines.append(line.strip())
-
+        for line in f:
+            lines.append(line.strip())
 
     blank_index = lines.index("")
 
@@ -27,8 +24,8 @@ def read_database(ingredient_file):
     return ranges, ingredient_ids
 
 
-def main():
-    ranges,ingredient_ids = read_database("input05.txt")
+def part1():
+    ranges, ingredient_ids = read_database("input05.txt")
 
     fresh_count = 0
 
@@ -43,8 +40,35 @@ def main():
         if is_fresh:
             fresh_count += 1
 
-    print(fresh_count)
+    return fresh_count
+
+
+def part2():
+    ranges, _ = read_database("input05.txt")
+
+    ranges.sort()
+
+    merged = []
+    for start, end in ranges:
+        if not merged:
+            merged.append([start, end])
+        else:
+            last_start = merged[-1][0]
+            last_end = merged[-1][1]
+
+            if start <= last_end:
+                if end > last_end:
+                    merged[-1][1] = end
+            else:
+                merged.append([start, end])
+
+    total_fresh_ids = 0
+    for start, end in merged:
+        total_fresh_ids += (end - start + 1)
+
+    return total_fresh_ids
 
 
 if __name__ == "__main__":
-    main()
+    print("Day 5 Part 1:", part1())
+    print("Day 5 Part 2:", part2())
