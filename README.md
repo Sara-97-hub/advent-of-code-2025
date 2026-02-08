@@ -1,18 +1,54 @@
-# Advent of Code 2024
+# Advent of Code 2025 – Python Solutions
 
-My solutions for Advent of Code 2024 challenges in Python.
+This repository contains my solutions to Advent of Code 2025 challenges written in Python.
 
-## About
-Advent of Code is an annual coding challenge with daily programming puzzles throughout December. I'm solving these challenges to improve my Python skills and algorithmic thinking.
+I used these daily programming puzzles as a self-study project to learn Python from scratch and practice problem solving on real tasks.
 
-## Progress
-Currently working through the challenges and learning problem-solving techniques.
+## Goal
+
+The goal of this project was to learn Python by actively solving problems instead of only reading documentation or tutorials.
+
+Through this project I focused on:
+
+* understanding problem statements
+* turning ideas into algorithms
+* debugging syntax and logic errors
+* gradually improving code readability
+
+## What I Learned
+
+While solving these challenges I gained practical experience with:
+
+* loops and conditional statements
+* string parsing and manipulation
+* reading and processing input files
+* tracking state using variables
+* handling edge cases
+* fixing indentation and runtime errors in Python
+
+## Project Structure
+
+Each day is implemented as a separate Python script:
+
+day01.py
+day02.py
+day03.py
+...
+
+Each script reads its own input file and prints the final solution to the console.
+
+## How to Run
+
+Make sure Python 3 is installed.
+
+Run any task from the terminal:
+
+python day01.py
+
+## Why This Project
+
+I chose Advent of Code as a structured way to teach myself Python while also developing algorithmic thinking and debugging skills.
 
 ## Technologies
-- Python 3.x
 
-## Skills Practiced
-- Algorithm design
-- Data structures
-- Problem-solving
-- Code optimization
+* Python 3
